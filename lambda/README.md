@@ -70,3 +70,4 @@ exports.handler = (event, context, callback) => {
 the api gateway is a fully managed serverless service fron aws and it allows us to create, publish and run secure APIs at any scale, with API Gateway we can create API endpoints to integrate frontend applications with its backend, using RESTfull APIs over HTTPS.
 
 API Gateway being a serverless offering, does not require us to provision any servers, It allows us to build APIs that are extremely low cost, highly scaleable, secure, and easy to monitore as well, It's a fully managed service and can handle thousands of concurrent API calls, and being simple to use, we can have our APIs up and running quickly
+
