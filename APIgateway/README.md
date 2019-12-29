@@ -25,7 +25,32 @@ It's a fully managed services and can handle thousands of concurrent API calls a
         "operation": "$input.params('operation')",
         "input": {
             "op1": $input.json('$.num1'),
-            "op2": $input.params('$.num2')
+            "op2": $input.json('$.num2')
         }
     }
     ````
+### steps to configure respons mapping 
+1. in POST method select **integration response**
+2. expand method response status **200**
+    2.1. expand **Mapping Templates**
+    2.2. select **application/json** after that empty template
+    2.3 add json, this part change the form to show the test output
+    ````console
+        {
+            "result": $input.json('$.body')
+        }
+    ````
+        2.3.1 why we use '$.body', because is part of the result that we need
+        ````console
+            {
+                "statusCode": 200,
+                "body": "\"RESULT operation divide is 1\""
+            }
+        ````
+    2.4 whit the last step, the output chaged for this 
+    ````js
+        {
+             "result": "\"RESULT operation divide is 1\""
+        }
+    ````
+
