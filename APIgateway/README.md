@@ -53,4 +53,12 @@ It's a fully managed services and can handle thousands of concurrent API calls a
              "result": "\"RESULT operation divide is 1\""
         }
     ````
+    2.5 deploy api > select deployment stage 
+
+## Api Gateway models and Json Schema
+
+>Models provide a json schema for the template taht we use for request and response mappin or transformation within API Gateway, and these models can also be used for request body validation for incoming API request
+
+
+
 
