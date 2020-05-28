@@ -23,6 +23,11 @@ sls remove -v
 
 ## installed packages
 * npm install uuid
+* npm install --save @middy/core
+* npm install --save @middy/http-event-normalizer 
+* npm install --save @middy/http-error-handler py/http-json-parser@latest
 
 ## Documentation
-[AWS DynamoDB Document Client](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html)
+* [AWS DynamoDB Document Client](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html)
+* [Serverless - offline](https://www.npmjs.com/package/serverless-offline)
+* [Middy](https://github.com/middyjs/middy)

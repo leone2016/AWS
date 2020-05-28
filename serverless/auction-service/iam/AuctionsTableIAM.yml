@@ -1,0 +1,6 @@
+AuctionsTableIAM:
+  Effect: Allow
+  Action: # new array down
+    - dynamodb:PutItem # * (asterisk) It's going to allow all DynamoDb to be acctions
+  Resource:
+    - ${self:custom.AuctionsTable.arn} # ARN - Amazon Resource Name -> arn:aws:dynamodb:#{AWS::Region}:#{AWS::AccountId}:table/AuctionsTable

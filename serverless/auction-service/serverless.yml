@@ -11,25 +11,14 @@ provider:
   memorySize: 256
   stage: ${opt:stage, 'dev'}
   region: us-east-1
-  iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - dynamodb: PutItem
-      Resource:
-        - arn:aws:dynamodb:#{AWS::Region}:#{AWS::AccountId}:table/AuctionsTable
+  environment:
+    AUCTIONS_TABLE_NAME: ${self:custom.AuctionsTable.name}
+  iamRoleStatements: # this is just going to be an array of  objects
+    - ${file(iam/AuctionsTableIAM.yml):AuctionsTableIAM}
+
 resources:
   Resources:
-    AuctionsTable: #logicalId for Resources
-      Type: AWS::DynamoDB::Table
-      Properties:
-        TableName: AuctionsTable
-        BillingMode: PAY_PER_REQUEST
-        AttributeDefinitions: # this is an array
-          - AttributeName: id # Dash specify the items in the array, attributeName and Type are objects
-            AttributeType: S #string
-        KeySchema:
-          - AttributeName: id
-            KeyType: HASH
+    AuctionsTable: ${file(resources/AuctionsTable.yml):AuctionsTable} # AuctionsTable: <- is an Object
 functions:
   createAuction:
     handler: src/handlers/createAuction.handler
@@ -38,5 +27,11 @@ functions:
           method: POST
           path: /auction
 custom:
+  #Ref : when you pass the logic ID of this resource to the intrinsic Ref function, Ref returns the resource name for
+  # example { Ref : MyResourse }
+  # Ref will return the DynamoDb Table name
+  AuctionsTable:
+    name: !Ref AuctionsTable
+    arn: !GetAtt AuctionsTable.Arn
   bundle:
     linting: false
