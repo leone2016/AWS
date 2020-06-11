@@ -26,6 +26,13 @@ functions:
       - http:
           method: POST
           path: /auction
+
+  getAuctions:
+    handler: src/handlers/getAuctions.handler
+    events:
+      - http:
+          method: GET
+          path: /auctions
 custom:
   #Ref : when you pass the logic ID of this resource to the intrinsic Ref function, Ref returns the resource name for
   # example { Ref : MyResourse }
