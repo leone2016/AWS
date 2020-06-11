@@ -40,6 +40,13 @@ functions:
       - http:
           method: GET
           path: /auction/{id}
+
+  placeBid:
+    handler: src/handlers/placeBid.handler
+    events:
+      - http:
+          method: PATCH
+          path: /auction/{id}/bid
 custom:
   #Ref : when you pass the logic ID of this resource to the intrinsic Ref function, Ref returns the resource name for
   # example { Ref : MyResourse }

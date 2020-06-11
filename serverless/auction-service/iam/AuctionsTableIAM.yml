@@ -4,5 +4,6 @@ AuctionsTableIAM:
     - dynamodb:PutItem # * (asterisk) It's going to allow all DynamoDb to be acctions
     - dynamodb:Scan
     - dynamodb:GetItem
+    - dynamodb:UpdateItem
   Resource:
     - ${self:custom.AuctionsTable.arn} # ARN - Amazon Resource Name -> arn:aws:dynamodb:#{AWS::Region}:#{AWS::AccountId}:table/AuctionsTable
