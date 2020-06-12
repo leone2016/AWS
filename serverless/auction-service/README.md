@@ -27,6 +27,18 @@ sls remove -v
 * npm install --save @middy/http-event-normalizer 
 * npm install --save @middy/http-error-handler py/http-json-parser@latest
 
+
+#### Schedule
+
+* Similar to search lambda or DynamoDb, find EventBridge
+* click left menu
+* Select **Rules** Amazon EventBridge **>** Events **>** Rules (here you can find the schedule and validate that this work every minute )
+```
+sls deploy -v //after we update or create serverles.yml
+sls logs -f processAuction //see all the logs about this schedule
+sls logs -f processAuction --startTime 1m //see all the logs about this schedule 1min ago (it's possible with 1h)
+sls invoke -f processAuction  -l // call a function manually and param (l) is for logs 
+```
 ## Documentation
 * [AWS DynamoDB Document Client](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html)
 * [Serverless - offline](https://www.npmjs.com/package/serverless-offline)

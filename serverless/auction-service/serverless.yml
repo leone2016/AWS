@@ -47,6 +47,11 @@ functions:
       - http:
           method: PATCH
           path: /auction/{id}/bid
+
+  processAuction:
+    handler: src/handlers/processAuction.handler
+#    events:
+#      - schedule: rate(1 minute)
 custom:
   #Ref : when you pass the logic ID of this resource to the intrinsic Ref function, Ref returns the resource name for
   # example { Ref : MyResourse }

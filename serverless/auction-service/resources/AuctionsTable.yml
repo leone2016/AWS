@@ -6,6 +6,34 @@ AuctionsTable: #logicalId for Resources
     AttributeDefinitions: # this is an array
       - AttributeName: id # Dash specify the items in the array, attributeName and Type are objects
         AttributeType: S #string
+      - AttributeName: status #
+        AttributeType: S
+      - AttributeName: endingAt
+        AttributeType: S
+    # CLASS : 36 When we define our attributes in that and what to be we define th core schema (above) for table, each attribute
+    # we define here we most also define a KeySchema the ideas specified our primary key of our table and then
+    # GLOBALSECONDARYINDEXES (GSI) define the other two the last thing is projection
+
+    # Projection:  What happens behind the scenes when you create the global secondary indexes, is basically that
+    # dynamoDB creates a sort of virtual copy of our table it allows you to query based on this attributes
+    # - AttributeName: status
+    #   KeyType: HASH
+    # - AttributeName: endingAt
+    #   KeyType: RANGE
+
+    # and when I say projection, you basically tell tht anybody which attributes it needs to keep in the virtual table
+    # (ProjectionType: ALL) when I say ALL  that means is that if a query based on a SC status or ending at, I'm going
+    # to get all the attribues of the items in my table
     KeySchema:
       - AttributeName: id
         KeyType: HASH
+    GlobalSecondaryIndexes: # GSI
+      - IndexName: statusAndEndDate #is going to be status and end date, I can call whatever I want
+        KeySchema:
+          - AttributeName: status # Partition Key
+            KeyType: HASH # so we can search by status whether it's open closed
+          - AttributeName: endingAt # Short Key
+            KeyType: RANGE  # this will allow us to sort and filter based on the ending dates
+        Projection:
+          ProjectionType: ALL # Attributes
+
