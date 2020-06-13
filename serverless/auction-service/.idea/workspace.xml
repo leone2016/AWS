@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="835af81f-f675-4661-bb4c-e44fc761c32d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iam/AuctionsTableIAM.yml" beforeDir="false" afterPath="$PROJECT_DIR$/iam/AuctionsTableIAM.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -55,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/handlers/placeBid.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="15" column="74" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="74" />
+            <state relative-caret-position="105">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -71,10 +70,22 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="793">
-                <caret line="45" selection-start-line="45" selection-end-line="45" />
+              <first_editor relative-caret-position="16">
+                <caret line="32" column="56" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
               </first_editor>
               <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/handlers/getAuctions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="30" selection-start-line="30" selection-end-line="31" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -98,7 +109,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/handlers/hello.js" />
         <option value="$PROJECT_DIR$/resources/AuctionTable.yml" />
-        <option value="$PROJECT_DIR$/src/handlers/getAuctions.js" />
         <option value="$PROJECT_DIR$/src/handlers/getAuction.js" />
         <option value="$PROJECT_DIR$/src/handlers/createAuction.js" />
         <option value="$PROJECT_DIR$/resources/AuctionsTable.yml" />
@@ -106,9 +116,10 @@
         <option value="$PROJECT_DIR$/serverless.yml" />
         <option value="$PROJECT_DIR$/src/lib/getEndedAuctions.js" />
         <option value="$PROJECT_DIR$/src/lib/closeAuction.js" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/handlers/processAuction.js" />
         <option value="$PROJECT_DIR$/src/handlers/placeBid.js" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/handlers/getAuctions.js" />
       </list>
     </option>
   </component>
@@ -207,16 +218,15 @@
       <workItem from="1591960267047" duration="1846000" />
       <workItem from="1591998664897" duration="4728000" />
       <workItem from="1592007198136" duration="2522000" />
-      <workItem from="1592053232714" duration="1125000" />
+      <workItem from="1592053232714" duration="2343000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45304000" />
+    <option name="totallyTimeSpent" value="46522000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="22" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.06849315" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -269,16 +279,6 @@
           <caret line="14" column="26" lean-forward="true" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/handlers/getAuctions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="37" column="39" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -338,16 +338,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="793">
-            <caret line="45" selection-start-line="45" selection-end-line="45" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/handlers/processAuction.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -360,8 +350,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/handlers/placeBid.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="15" column="74" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="74" />
+        <state relative-caret-position="105">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="16">
+            <caret line="32" column="56" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/handlers/getAuctions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="30" selection-start-line="30" selection-end-line="31" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>

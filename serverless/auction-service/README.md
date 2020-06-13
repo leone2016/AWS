@@ -43,3 +43,4 @@ sls invoke -f processAuction  -l // call a function manually and param (l) is fo
 * [AWS DynamoDB Document Client](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html)
 * [Serverless - offline](https://www.npmjs.com/package/serverless-offline)
 * [Middy](https://github.com/middyjs/middy)
+* [Json schema](https://json-schema.org/)
