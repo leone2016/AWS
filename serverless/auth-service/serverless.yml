@@ -1,0 +1,67 @@
+
+service:
+  name: auth-service
+
+plugins:
+  - serverless-bundle
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  memorySize: 128
+  region: us-east-1
+  environment:
+    AUTH0_PUBLIC_KEY: ${file(secret.pem)}
+
+functions:
+  # auth:: this lambda will allow us to execute another lambda let's call it the target lambda for example createAuction so what lambda authorize ir does
+  # you said it in API gateway to authorize each request and if the request is successfully authorizer thien the request will move on to say createAuction
+  # with the user details in the claims of that token
+  # if the request FAIL you get an unAuthorizer error
+  auth: # this is a really important function in this service and what this is call is basically a lambda authorizer  
+    handler: src/handlers/auth.handler
+    cors: true
+  # publicEndpoint:: these are purely used for testing so you could call public endPoint  for wherever and we'll allways work
+  publicEndpoint:
+    handler: src/handlers/public.handler
+    events:
+      - http:
+          path: public
+          method: POST
+          cors: true
+  # privateEndpoint:: we're gonna use this private endPoint to test if our authorization mechanism works properly
+  privateEndpoint:
+    handler: src/handlers/private.handler
+    events:
+      - http:
+          path: private
+          method: POST
+          authorizer: auth
+          cors: true
+
+resources:
+  Resources:
+    # This response is needed for custom authorizer failures cors support ¯\_(ツ)_/¯
+    GatewayResponse:
+      Type: 'AWS::ApiGateway::GatewayResponse'
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+          gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+        ResponseType: EXPIRED_TOKEN
+        RestApiId:
+          Ref: 'ApiGatewayRestApi'
+        StatusCode: '401'
+    AuthFailureGatewayResponse:
+      Type: 'AWS::ApiGateway::GatewayResponse'
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+          gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+        ResponseType: UNAUTHORIZED
+        RestApiId:
+          Ref: 'ApiGatewayRestApi'
+        StatusCode: '401'
+custom:
+  bundle:
+    linting: false

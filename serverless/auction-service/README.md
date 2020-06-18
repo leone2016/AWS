@@ -39,8 +39,17 @@ sls logs -f processAuction //see all the logs about this schedule
 sls logs -f processAuction --startTime 1m //see all the logs about this schedule 1min ago (it's possible with 1h)
 sls invoke -f processAuction  -l // call a function manually and param (l) is for logs 
 ```
+
+### AUTH service
+```
+sls deploy -v --stage dev
+```
+## Validation JsonSchema
+* first read JsonSchema
+* $ npm install @middy/validator
 ## Documentation
 * [AWS DynamoDB Document Client](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html)
 * [Serverless - offline](https://www.npmjs.com/package/serverless-offline)
 * [Middy](https://github.com/middyjs/middy)
 * [Json schema](https://json-schema.org/)
+* [Git serverless-auth0](https://github.com/codingly-io/serverless-auth0-authorizer)
