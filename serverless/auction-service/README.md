@@ -43,6 +43,16 @@ sls invoke -f processAuction  -l // call a function manually and param (l) is fo
 ### AUTH service
 ```
 sls deploy -v --stage dev
+
+// use git bash to generate a token
+
+curl --location --request POST 'https://dev-v9zj5gb2.au.auth0.com/oauth/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'client_id=Voiv6LME8LPoiNhWduWNIItVxPvRZU0D' \
+--data-urlencode 'username=xxx.31@xxx.com' \
+--data-urlencode 'password=xxx@xxx1011' \
+--data-urlencode 'grant_type=password' \
+--data-urlencode 'scope=openid' 
 ```
 ## Validation JsonSchema
 * first read JsonSchema

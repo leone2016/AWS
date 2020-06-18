@@ -26,6 +26,12 @@ functions:
       - http:
           method: POST
           path: /auction
+          authorizer: ${self:custom.authorizer}
+          #  ARN of the lambda AUTH that I want to use to protect this function to authorize the user, because
+          # the auth service is deploy in the same AWS account as this service it's going to work without problem
+          # even if that ain't the case there is a way to deal with that
+          # it's called assuming a role but we don't have to worry about that right now because well we have them both
+          # services in the same aws account,
 
   getAuctions:
     handler: src/handlers/getAuctions.handler
@@ -33,6 +39,7 @@ functions:
       - http:
           method: GET
           path: /auctions
+          authorizer: ${self:custom.authorizer}
 
   getAuction:
     handler: src/handlers/getAuction.handler
@@ -40,6 +47,7 @@ functions:
       - http:
           method: GET
           path: /auction/{id}
+          authorizer: ${self:custom.authorizer}
 
   placeBid:
     handler: src/handlers/placeBid.handler
@@ -47,15 +55,18 @@ functions:
       - http:
           method: PATCH
           path: /auction/{id}/bid
+          authorizer: ${self:custom.authorizer}
 
   processAuction:
-    handler: src/handlers/processAuction.handler
+    handler: src/handlers/processAuction.handler # don't use http o API gateway so we don't need authorizer
 #    events:
 #      - schedule: rate(1 minute)
 custom:
+  # for sudo parameter it's important to add - serverless-pseudo-parameters
   #Ref : when you pass the logic ID of this resource to the intrinsic Ref function, Ref returns the resource name for
   # example { Ref : MyResourse }
   # Ref will return the DynamoDb Table name
+  authorizer: arn:aws:lambda:#{AWS::Region}:#{AWS::AccountId}:function:auth-service-${self:provider.stage}-auth
   AuctionsTable:
     name: !Ref AuctionsTable
     arn: !GetAtt AuctionsTable.Arn
