@@ -50,7 +50,7 @@ functions:
           authorizer: ${self:custom.authorizer}
 
   placeBid:
-    handler: src/handlers/placeBid.handler
+    handler: src/handlers/place_Bid.handler
     events:
       - http:
           method: PATCH
